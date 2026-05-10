@@ -1,6 +1,6 @@
 ---
-title: "Software for Modeling"
-subtitle: "Foundations of Statistical Modeling and Machine Learning"
+title: "Software para el Modelado"
+subtitle: "Fundamentos de Modelado Estadístico y Machine Learning"
 author: "Danilo David Estrella Guerra"
 format:
   revealjs:
@@ -400,101 +400,95 @@ format:
 </style>
 ```
 
-```{=html}
 <!-- ══════════════════════════════════════════════
      SLIDE 1 — COVER
 ══════════════════════════════════════════════ -->
-```
-
-##  {.noframenumbering background-color="#f8f7f4"}
+## {.noframenumbering background-color="#f8f7f4"}
 
 ```{=html}
 <div class="cover-deco">Σ</div>
 <div class="cover-wrap">
-  <div class="cover-eyebrow">Applied Machine Learning · Chapter 1</div>
-  <div class="cover-title">Software for<br>Modeling</div>
-  <div class="cover-sub">Foundations of Statistical Modeling and Machine Learning</div>
+  <div class="cover-eyebrow">Machine Learning Aplicado · Capítulo 1</div>
+  <div class="cover-title">Software para<br>Modelado</div>
+  <div class="cover-sub">Fundamentos del Modelado Estadístico y Machine Learning</div>
   <div class="cover-rule"></div>
   <div class="cover-meta">
     <div class="cover-meta-item">
-      <span class="cover-meta-label">Context</span>
+      <span class="cover-meta-label">Contexto</span>
       <span class="cover-meta-value">Tidy Modeling with R</span>
     </div>
     <div class="cover-meta-item">
-      <span class="cover-meta-label">Duration</span>
+      <span class="cover-meta-label">Duración</span>
       <span class="cover-meta-value">25 min</span>
     </div>
     <div class="cover-meta-item">
-      <span class="cover-meta-label">Scope</span>
-      <span class="cover-meta-value">Conceptual · Practical</span>
+      <span class="cover-meta-label">Alcance</span>
+      <span class="cover-meta-value">Conceptual · Práctico</span>
     </div>
   </div>
 </div>
 ```
 
-```{=html}
 <!-- ══════════════════════════════════════════════
      SLIDE 2 — ¿QUÉ ES UN MODELO?
 ══════════════════════════════════════════════ -->
-```
+## ¿Qué es un Modelo?
 
-## What Is a Model?
-
-::::: columns
+::: columns
 ::: {.column width="55%"}
-A **model** is a mathematical representation that captures the essential structure of a complex phenomenon.
+
+Un **modelo** es una representación matemática que captura la estructura esencial de un fenómeno complejo.
 
 <br>
 
 ```{=html}
 <div class="eq-block">
-  <div class="eq-label">General Form</div>
+  <div class="eq-label">Forma General</div>
   $$Y = f(X_1, X_2, \ldots, X_p) + \varepsilon$$
 </div>
 ```
 
 ```{=html}
 <div class="eq-block">
-  <div class="eq-label">Linear Specification</div>
+  <div class="eq-label">Especificación Lineal</div>
   $$\hat{Y} = \beta_0 + \sum_{j=1}^{p} \beta_j X_j$$
 </div>
 ```
-:::
 
+:::
 ::: {.column width="45%"}
+
 ```{=html}
 <div style="margin-top: 0.5rem;">
   <div class="concept-box" style="margin-bottom: 0.7rem;">
-    <p>🔍 <strong>Reductive capacity</strong><br>
-    <span style="font-size:0.85rem; color:var(--ink-muted);">Simplify complex reality into tractable structure</span></p>
+    <p>🔍 <strong>Capacidad reductiva</strong><br>
+    <span style="font-size:0.85rem; color:var(--ink-muted);">Simplificar la realidad compleja en una estructura manejable</span></p>
   </div>
   <div class="concept-box">
-    <p>⚖️ <strong>Bias–Variance trade-off</strong><br>
-    <span style="font-size:0.85rem; color:var(--ink-muted);">All models are wrong; some are useful — Box (1976)</span></p>
+    <p>⚖️ <strong>Sesgo–Varianza (trade-off)</strong><br>
+    <span style="font-size:0.85rem; color:var(--ink-muted);">Todos los modelos son incorrectos; algunos son útiles — Box (1976)</span></p>
   </div>
   <div style="margin-top: 1rem;">
     <div class="pill-row">
-      <span class="pill">Y → outcome</span>
-      <span class="pill">X → predictors</span>
-      <span class="pill">ε → noise</span>
+      <span class="pill">Y → variable respuesta</span>
+      <span class="pill">X → predictores</span>
+      <span class="pill">ε → error</span>
     </div>
   </div>
 </div>
 ```
-:::
-:::::
 
-```{=html}
+:::
+:::
+
 <!-- ══════════════════════════════════════════════
      SLIDE 3 — MODELOS EN LA VIDA DIARIA
 ══════════════════════════════════════════════ -->
-```
-
-## Models in Everyday Life
+## Modelos en la Vida Cotidiana
 
 ```{=html}
 <p style="font-size:0.92rem; color:var(--ink-muted); margin-bottom:1.2rem;">
-Predictive models shape the decisions of billions of users every day.
+Los modelos predictivos condicionan las decisiones de miles de millones de usuarios cada día.
 </p>
 
 <div class="card-grid four">
@@ -502,45 +496,43 @@ Predictive models shape the decisions of billions of users every day.
   <div class="card">
     <span class="card-icon">🎬</span>
     <div class="card-title">Netflix</div>
-    <div class="card-body">Collaborative filtering and NLP to surface the next show you'll watch.</div>
+    <div class="card-body">Filtrado colaborativo y PLN para mostrar el próximo contenido que verás.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🎵</span>
     <div class="card-title">Spotify</div>
-    <div class="card-body">Audio features + graph embeddings for personalised playlist generation.</div>
+    <div class="card-body">Características de audio y embeddings de grafos para la generación personalizada de listas.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🛡️</span>
-    <div class="card-title">Fraud Detection</div>
-    <div class="card-body">Real-time anomaly scoring on millions of transactions per second.</div>
+    <div class="card-title">Detección de Fraude</div>
+    <div class="card-body">Puntuación de anomalías en tiempo real sobre millones de transacciones por segundo.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🌦️</span>
-    <div class="card-title">Weather Forecast</div>
-    <div class="card-body">Ensemble numerical models with deep-learning post-processing layers.</div>
+    <div class="card-title">Pronóstico del Clima</div>
+    <div class="card-body">Modelos numéricos en conjunto con capas de posprocesamiento de deep learning.</div>
   </div>
 
 </div>
 
 <div class="concept-box teal" style="margin-top:1.2rem;">
-  <p>In every case: <strong>structured data + algorithmic function → actionable prediction.</strong></p>
+  <p>En todos los casos: <strong>datos estructurados + función algorítmica → predicción accionable.</strong></p>
 </div>
 ```
 
-```{=html}
 <!-- ══════════════════════════════════════════════
      SLIDE 4 — FUNDAMENTOS DEL SOFTWARE
 ══════════════════════════════════════════════ -->
-```
+## Principios del Software de Modelado
 
-## Principles of Modeling Software
-
-::::: columns
+::: columns
 ::: {.column width="52%"}
-Good modeling software should guide practitioners towards correct practice by **default**.
+
+Un buen software de modelado debe guiar a los analistas hacia la práctica correcta **por defecto**.
 
 <br>
 
@@ -548,151 +540,127 @@ Good modeling software should guide practitioners towards correct practice by **
 <div class="timeline">
 
   <div class="tl-item">
-    <div class="tl-title">Ease of Use</div>
-    <div class="tl-body">Fluent, expressive syntax that maps to statistical concepts.</div>
+    <div class="tl-title">Facilidad de Uso</div>
+    <div class="tl-body">Sintaxis fluida y expresiva que se corresponde con los conceptos estadísticos.</div>
   </div>
 
   <div class="tl-item">
-    <div class="tl-title">Reproducibility</div>
-    <div class="tl-body">Seeds, versioned recipes, and serialisable workflows.</div>
+    <div class="tl-title">Reproducibilidad</div>
+    <div class="tl-body">Semillas, recetas versionadas y flujos de trabajo serializables.</div>
   </div>
 
   <div class="tl-item">
-    <div class="tl-title">Error Protection</div>
-    <div class="tl-body">Guard-rails against data leakage and invalid preprocessing order.</div>
+    <div class="tl-title">Protección ante Errores</div>
+    <div class="tl-body">Barreras contra la fuga de datos y el orden inválido de preprocesamiento.</div>
   </div>
 
 </div>
 ```
-:::
 
+:::
 ::: {.column width="48%"}
+
 ```{=html}
 <div style="background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.4rem; margin-top:0.5rem;">
   <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Pit of Success</div>
 
-  <!-- Pit diagram -->
-  <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-    <!-- funnel shape -->
-    <path d="M10,20 L140,140 L270,20 Z" fill="rgba(45,106,159,0.08)" stroke="rgba(45,106,159,0.3)" stroke-width="1.5"/>
-    <!-- wrong path left -->
-    <text x="30" y="55" font-family="DM Sans,sans-serif" font-size="9" fill="#5c5c7a">Wrong path</text>
-    <!-- success dot -->
-    <circle cx="140" cy="134" r="9" fill="var(--accent2)" opacity="0.9"/>
-    <text x="112" y="155" font-family="DM Sans,sans-serif" font-size="9" fill="var(--accent2)">✓ Correct practice</text>
-    <!-- labels -->
-    <text x="55" y="35" font-family="JetBrains Mono,monospace" font-size="8" fill="var(--ink-muted)">many failure modes</text>
-    <text x="160" y="35" font-family="JetBrains Mono,monospace" font-size="8" fill="var(--ink-muted)">many failure modes</text>
-    <line x1="140" y1="20" x2="140" y2="125" stroke="rgba(45,106,159,0.2)" stroke-dasharray="3,3"/>
-    <text x="108" y="16" font-family="DM Sans,sans-serif" font-size="9" font-weight="500" fill="var(--ink)">Default path</text>
-  </svg>
+<div style="display:flex; justify-content:center; margin-top:1rem;">
+  <img src="images/pit_of_succes.png" alt="Pit of succes"
+       style="width:100%; max-width:800px; height:auto; border-radius:8px;">
+</div>
 
   <p style="font-size:0.75rem; color:var(--ink-muted); margin:0; text-align:center; margin-top:0.3rem;">
-  Defaults channel analysts toward statistically sound choices.
+  Los valores por defecto canalizan al analista hacia decisiones estadísticamente correctas.
   </p>
 </div>
 ```
-:::
-:::::
 
-```{=html}
+:::
+:::
+
 <!-- ══════════════════════════════════════════════
      SLIDE 5 — ECOSISTEMA R
 ══════════════════════════════════════════════ -->
-```
+## El Ecosistema R
 
-## The R Ecosystem
-
-::::: columns
+::: columns
 ::: {.column width="48%"}
+
 ```{=html}
 <div style="margin-top:0.5rem;">
   <div class="eco-stack">
     <div class="eco-layer l1">
       R
-      <div class="eco-caption">Statistical computing foundation</div>
+      <div class="eco-caption">Base de computación estadística</div>
     </div>
     <div class="eco-arrow">↓</div>
     <div class="eco-layer l2">
       tidyverse
-      <div class="eco-caption">Coherent data grammar</div>
+      <div class="eco-caption">Gramática coherente de datos</div>
     </div>
     <div class="eco-arrow">↓</div>
     <div class="eco-layer l3">
       tidymodels
-      <div class="eco-caption">Unified modeling interface</div>
+      <div class="eco-caption">Interfaz unificada de modelado</div>
     </div>
+  </div>
+  
+  <!-- ↓ LOGOS — agregar aquí los que faltan -->
+  <div style="margin-top:1.2rem; display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center; justify-content:center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg"
+         alt="R" style="height:58px; object-fit:contain;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Tidyverse_hex_logo.svg"
+         alt="tidyverse" style="height:58px; object-fit:contain;">
+    <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/SVG/tidymodels.svg"
+         alt="tidymodels" style="height:58px; object-fit:contain;">
   </div>
 </div>
 ```
-:::
 
+:::
 ::: {.column width="52%"}
+
 ```{=html}
 <div style="margin-top:0.5rem; display:flex; flex-direction:column; gap:0.75rem;">
 
   <div class="concept-box">
-    <p>📦 <strong>Consistent grammar</strong><br>
-    <span style="font-size:0.83rem;color:var(--ink-muted);">Every package speaks the same design language — tibbles, pipes, tidy evaluation.</span></p>
+    <p>📦 <strong>Gramática consistente</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);">Cada paquete habla el mismo lenguaje de diseño: tibbles, pipes, tidy evaluation.</span></p>
   </div>
 
   <div class="concept-box">
-    <p>🔁 <strong>Reproducible workflows</strong><br>
-    <span style="font-size:0.83rem;color:var(--ink-muted);">Recipes encode all preprocessing steps; models are serialisable objects.</span></p>
+    <p>🔁 <strong>Flujos reproducibles</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);">Las recetas codifican todos los pasos de preprocesamiento; los modelos son objetos serializables.</span></p>
   </div>
 
   <div class="concept-box teal">
-    <p>🧩 <strong>Modular & extensible</strong><br>
-    <span style="font-size:0.83rem;color:var(--ink-muted);"><code>parsnip</code> → model specs · <code>recipes</code> → feature engineering · <code>yardstick</code> → metrics</span></p>
+    <p>🧩 <strong>Modular y extensible</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);"><code>parsnip</code> → especificación de modelos · <code>recipes</code> → ingeniería de variables · <code>yardstick</code> → métricas</span></p>
   </div>
 
 </div>
 ```
-:::
-:::::
 
-```{=html}
+:::
+:::
+
 <!-- ══════════════════════════════════════════════
      SLIDE 6 — TAXONOMÍA (MAPA CONCEPTUAL)
 ══════════════════════════════════════════════ -->
-```
+## Taxonomía de Modelos
 
-## Taxonomy of Models
 
 ```{=html}
 <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:0.8rem;">
-Three primary objectives drive every modeling effort.
+Tres objetivos principales guían todo esfuerzo de modelado.
 </p>
+
+<div style="display:flex; justify-content:center; margin-top:1rem;">
+  <img src="images/modelos.png" alt="Taxonomía de modelos"
+       style="width:100%; max-width:800px; height:auto; border-radius:8px;">
+</div>
 ```
 
-```{mermaid}
-%%| fig-width: 11
-%%| fig-height: 4.2
-%%{ init: { 'theme': 'base', 'themeVariables': { 'primaryColor': '#2d6a9f', 'primaryTextColor': '#1a1a2e', 'primaryBorderColor': '#2d6a9f', 'lineColor': '#94a3b8', 'secondaryColor': '#f1f5f9', 'background': '#f8f7f4', 'mainBkg': '#f8f7f4', 'fontFamily': 'sans-serif', 'fontSize': '15px' } } }%%
-graph TD
-    M["🗂 Models"]:::root
-
-    M --> D["📈 Descriptive"]:::blue
-    M --> I["🔬 Inferential"]:::blue
-    M --> P["🎯 Predictive"]:::blue
-
-    D --> D1["Trend detection"]:::leafBlue
-    D --> D2["Pattern exploration"]:::leafBlue
-    D --> D3["LOESS / Smoothing"]:::leafBlue
-
-    I --> I1["Hypothesis testing"]:::leafBlue
-    I --> I2["Confidence intervals"]:::leafBlue
-    I --> I3["Causal inference"]:::leafBlue
-
-    P --> P1["Mechanistic"]:::leafTeal
-    P --> P2["Empirical / ML"]:::leafTeal
-    P --> P3["Generalisation"]:::leafTeal
-
-    classDef root fill:#1a1a2e,color:#ffffff,stroke:#1a1a2e,rx:8,font-size:16px,font-weight:bold
-    classDef blue fill:#2d6a9f,color:#ffffff,stroke:#1a4f7a,rx:6,font-size:14px,font-weight:600
-    classDef leafBlue fill:#dbeafe,color:#1e3a5f,stroke:#93c5fd,rx:5,font-size:13px
-    classDef leafTeal fill:#ccfbf1,color:#134e4a,stroke:#5eead4,rx:5,font-size:13px
-```
 
 ```{=html}
 <!-- ══════════════════════════════════════════════
@@ -700,27 +668,27 @@ graph TD
 ══════════════════════════════════════════════ -->
 ```
 
-## Descriptive Models
+## Modelos Descriptivos
 
 ::::: columns
 ::: {.column width="54%"}
-**Goal:** understand *what is there*, not why.
+**Objetivo:** entender *qué hay*, no el porqué.
 
 <br>
 
 ```{=html}
 <div class="timeline">
   <div class="tl-item">
-    <div class="tl-title">Trend Detection</div>
-    <div class="tl-body">Summarise central tendency and direction over time or across groups.</div>
+    <div class="tl-title">Detección de Tendencias</div>
+    <div class="tl-body">Resume la tendencia central y la dirección a lo largo del tiempo o entre grupos.</div>
   </div>
   <div class="tl-item">
-    <div class="tl-title">LOESS Smoothing</div>
-    <div class="tl-body">Locally-weighted regression reveals non-linear patterns without parametric assumptions.</div>
+    <div class="tl-title">Suavizado LOESS</div>
+    <div class="tl-body">La regresión ponderada localmente revela patrones no lineales sin supuestos paramétricos.</div>
   </div>
   <div class="tl-item">
-    <div class="tl-title">Pattern Exploration</div>
-    <div class="tl-body">EDA-driven — the model serves the analyst's curiosity, not an external standard.</div>
+    <div class="tl-title">Exploración de Patrones</div>
+    <div class="tl-body">Orientado al EDA — el modelo sirve a la curiosidad del analista, no a un estándar externo.</div>
   </div>
 </div>
 ```
@@ -754,7 +722,7 @@ graph TD
         fill="none" stroke="#4db6ac" stroke-width="2.2" stroke-linecap="round"/>
   <text x="155" y="38" font-family="JetBrains Mono" font-size="8" fill="#4db6ac">LOESS</text>
 </svg>
-<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Non-parametric trend without distributional assumptions</p>
+<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Tendencia no paramétrica sin supuestos distribucionales</p>
 </div>
 ```
 :::
@@ -766,22 +734,22 @@ graph TD
 ══════════════════════════════════════════════ -->
 ```
 
-## Inferential Models
+## Modelos Inferenciales
 
 ::::: columns
 ::: {.column width="54%"}
-**Goal:** draw conclusions about a *population* from a *sample*.
+**Objetivo:** extraer conclusiones sobre una *población* a partir de una *muestra*.
 
 <br>
 
 ```{=html}
 <table class="compare-table">
-<thead><tr><th>Concept</th><th>Description</th></tr></thead>
+<thead><tr><th>Concepto</th><th>Descripción</th></tr></thead>
 <tbody>
-<tr><td><strong>Hypothesis</strong></td><td>H₀ vs Hₐ — formal claim about a parameter</td></tr>
-<tr><td><strong>p-value</strong></td><td>P(data | H₀) — probability under the null</td></tr>
-<tr><td><strong>CI</strong></td><td>Range of plausible parameter values</td></tr>
-<tr><td><strong>Assumptions</strong></td><td>Normality, independence, homoscedasticity</td></tr>
+<tr><td><strong>Hipótesis</strong></td><td>H₀ vs Hₐ — afirmación formal sobre un parámetro</td></tr>
+<tr><td><strong>valor p</strong></td><td>P(datos | H₀) — probabilidad bajo la hipótesis nula</td></tr>
+<tr><td><strong>IC</strong></td><td>Rango de valores plausibles del parámetro</td></tr>
+<tr><td><strong>Supuestos</strong></td><td>Normalidad, independencia, homocedasticidad</td></tr>
 </tbody>
 </table>
 ```
@@ -806,10 +774,10 @@ graph TD
   <line x1="70" y1="155" x2="180" y2="155" stroke="var(--accent2)" stroke-width="2"/>
   <line x1="70" y1="151" x2="70"  y2="158" stroke="var(--accent2)" stroke-width="2"/>
   <line x1="180" y1="151" x2="180" y2="158" stroke="var(--accent2)" stroke-width="2"/>
-  <text x="115" y="168" text-anchor="middle" font-family="DM Sans" font-size="8" fill="var(--accent2)">95% CI</text>
+  <text x="115" y="168" text-anchor="middle" font-family="DM Sans" font-size="8" fill="var(--accent2)">IC 95%</text>
   <text x="120" y="148" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#5c5c7a">μ</text>
 </svg>
-<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Null distribution with rejection region and confidence interval</p>
+<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Distribución nula con región de rechazo e intervalo de confianza</p>
 </div>
 ```
 :::
@@ -821,49 +789,49 @@ graph TD
 ══════════════════════════════════════════════ -->
 ```
 
-## Predictive Models
+## Modelos Predictivos
 
 ```{=html}
 <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">
-<strong>Goal:</strong> maximise accuracy on <em>new, unseen</em> data — not just explain existing observations.
+<strong>Objetivo:</strong> maximizar la precisión en datos <em>nuevos y no vistos</em> — no solo explicar las observaciones existentes.
 </p>
 
 <div class="card-grid">
 
   <div class="card">
-    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Mechanistic</div>
+    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Mecanístico</div>
     <div class="card-body" style="font-size:0.88rem;">
-      Grounded in domain theory.<br><br>
-      • Parameters have physical meaning<br>
-      • Extrapolates more safely<br>
-      • Requires strong assumptions<br><br>
-      <em style="font-size:0.8rem;color:var(--ink-muted);">Example: pharmacokinetic dose-response</em>
+      Fundamentado en teoría de dominio.<br><br>
+      • Los parámetros tienen significado físico<br>
+      • Extrapola con mayor seguridad<br>
+      • Requiere supuestos fuertes<br><br>
+      <em style="font-size:0.8rem;color:var(--ink-muted);">Ejemplo: dosis-respuesta farmacocinética</em>
     </div>
     <div class="pill-row" style="margin-top:0.8rem;">
-      <span class="pill">ODE-based</span>
-      <span class="pill">Theory-driven</span>
+      <span class="pill">Basado en EDO</span>
+      <span class="pill">Guiado por teoría</span>
     </div>
   </div>
 
   <div class="card">
-    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent2);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Empirical / ML</div>
+    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent2);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Empírico / ML</div>
     <div class="card-body" style="font-size:0.88rem;">
-      Learned from data patterns alone.<br><br>
-      • Parameters are latent / opaque<br>
-      • Excels at interpolation<br>
-      • Requires large samples<br><br>
-      <em style="font-size:0.8rem;color:var(--ink-muted);">Example: gradient boosted trees</em>
+      Aprendido únicamente a partir de patrones en los datos.<br><br>
+      • Los parámetros son latentes / opacos<br>
+      • Excelente en interpolación<br>
+      • Requiere muestras grandes<br><br>
+      <em style="font-size:0.8rem;color:var(--ink-muted);">Ejemplo: gradient boosted trees</em>
     </div>
     <div class="pill-row" style="margin-top:0.8rem;">
-      <span class="pill teal">Data-driven</span>
-      <span class="pill teal">High fidelity</span>
+      <span class="pill teal">Basado en datos</span>
+      <span class="pill teal">Alta fidelidad</span>
     </div>
   </div>
 
 </div>
 
 <div class="concept-box" style="margin-top:0.9rem;">
-  <p>Both types share a common imperative: <strong>generalisation</strong> — performance on data the model has never seen.</p>
+  <p>Ambos tipos comparten un imperativo común: la <strong>generalización</strong> — el rendimiento sobre datos que el modelo nunca ha visto.</p>
 </div>
 ```
 
@@ -873,36 +841,36 @@ graph TD
 ══════════════════════════════════════════════ -->
 ```
 
-## Modeling Terminology
+## Terminología de Modelado
 
 ::::: columns
 ::: {.column width="50%"}
-### Learning Paradigm
+### Paradigma de Aprendizaje
 
 ```{=html}
 <table class="compare-table" style="margin-top:0.5rem;">
-<thead><tr><th>Supervised</th><th>Unsupervised</th></tr></thead>
+<thead><tr><th>Supervisado</th><th>No supervisado</th></tr></thead>
 <tbody>
-<tr><td>Known outcome Y</td><td>No outcome label</td></tr>
-<tr><td>Learn f(X) → Y</td><td>Learn structure of X</td></tr>
-<tr><td>Regression, Classification</td><td>Clustering, Dim. reduction</td></tr>
-<tr><td>Ground-truth evaluation</td><td>Intrinsic evaluation</td></tr>
+<tr><td>Variable Y conocida</td><td>Sin etiqueta de salida</td></tr>
+<tr><td>Aprender f(X) → Y</td><td>Aprender la estructura de X</td></tr>
+<tr><td>Regresión, Clasificación</td><td>Clustering, Reducción de dimensión</td></tr>
+<tr><td>Evaluación con ground truth</td><td>Evaluación intrínseca</td></tr>
 </tbody>
 </table>
 ```
 :::
 
 ::: {.column width="50%"}
-### Task Type
+### Tipo de Tarea
 
 ```{=html}
 <table class="compare-table" style="margin-top:0.5rem;">
-<thead><tr><th>Regression</th><th>Classification</th></tr></thead>
+<thead><tr><th>Regresión</th><th>Clasificación</th></tr></thead>
 <tbody>
-<tr><td>Numeric outcome</td><td>Categorical outcome</td></tr>
+<tr><td>Variable de salida numérica</td><td>Variable de salida categórica</td></tr>
 <tr><td>RMSE, MAE, R²</td><td>Accuracy, AUC, F1</td></tr>
-<tr><td>House prices</td><td>Spam detection</td></tr>
-<tr><td>Continuous ŷ</td><td>Probability → class</td></tr>
+<tr><td>Precios de vivienda</td><td>Detección de spam</td></tr>
+<tr><td>ŷ continua</td><td>Probabilidad → clase</td></tr>
 </tbody>
 </table>
 ```
@@ -911,7 +879,7 @@ graph TD
 
 ```{=html}
 <div class="concept-box teal" style="margin-top:0.9rem;">
-  <p>Choosing the right paradigm <em>before</em> touching data is the first critical modeling decision.</p>
+  <p>Elegir el paradigma correcto <em>antes</em> de tocar los datos es la primera decisión crítica del modelado.</p>
 </div>
 ```
 
@@ -921,33 +889,19 @@ graph TD
 ══════════════════════════════════════════════ -->
 ```
 
-## Data Analysis Pipeline
+## Pipeline de Análisis de Datos
 
 ```{=html}
 <p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:0.8rem;">
-A rigorous workflow guards against the most common sources of modeling error.
+Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en el modelado.
 </p>
+
+<div style="display:flex; justify-content:center; margin-top:1rem;">
+  <img src="images/pipeline.png" alt="pipeline de analisis de datos"
+       style="width:100%; max-width:800px; height:auto; border-radius:8px;">
+</div>
 ```
 
-```{mermaid}
-%%| fig-width: 11
-%%| fig-height: 3.5
-%%{ init: { 'theme': 'base', 'themeVariables': { 'primaryColor': '#2d6a9f', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#1a4f7a', 'lineColor': '#5c5c7a', 'secondaryColor': '#f8f7f4', 'background': '#f8f7f4', 'mainBkg': '#f8f7f4', 'fontFamily': 'DM Sans, sans-serif' } } }%%
-flowchart LR
-    A[🧹 Data Cleaning] --> B[🔍 EDA]
-    B --> C[⚙️ Feature\nEngineering]
-    C --> D[🤖 Modeling]
-    D --> E[🎛️ Tuning]
-    E --> F[📊 Evaluation]
-    F -->|iterate| B
-
-    style A fill:#1a1a2e,color:#fff,stroke:#1a1a2e,rx:6
-    style B fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
-    style C fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
-    style D fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
-    style E fill:#4db6ac,color:#fff,stroke:#2a9d8f,rx:6
-    style F fill:#4db6ac,color:#fff,stroke:#2a9d8f,rx:6
-```
 
 ```{=html}
 <div class="pill-row" style="margin-top:0.6rem;">
@@ -966,11 +920,11 @@ flowchart LR
 ══════════════════════════════════════════════ -->
 ```
 
-## Iterative Modeling
+## Modelado Iterativo
 
 ::::: columns
 ::: {.column width="50%"}
-Modeling is never linear. It is a **cycle** driven by feedback at every stage.
+El modelado nunca es lineal. Es un **ciclo** impulsado por retroalimentación en cada etapa.
 
 <br>
 
@@ -978,19 +932,19 @@ Modeling is never linear. It is a **cycle** driven by feedback at every stage.
 <div class="timeline">
   <div class="tl-item">
     <div class="tl-title">EDA</div>
-    <div class="tl-body">Distributions, correlations, outliers — what does the data tell us before we ask?</div>
+    <div class="tl-body">Distribuciones, correlaciones, valores atípicos — ¿qué nos dicen los datos antes de preguntar?</div>
   </div>
   <div class="tl-item">
-    <div class="tl-title">Feature Engineering</div>
-    <div class="tl-body">Transformations, interactions, and encodings that inject domain knowledge.</div>
+    <div class="tl-title">Ingeniería de Características</div>
+    <div class="tl-body">Transformaciones, interacciones y codificaciones que incorporan conocimiento de dominio.</div>
   </div>
   <div class="tl-item">
-    <div class="tl-title">Tuning</div>
-    <div class="tl-body">Hyperparameter search over a resampling scheme — never on the test set.</div>
+    <div class="tl-title">Ajuste de Hiperparámetros</div>
+    <div class="tl-body">Búsqueda de hiperparámetros sobre un esquema de remuestreo — nunca sobre el conjunto de prueba.</div>
   </div>
   <div class="tl-item">
-    <div class="tl-title">Evaluation</div>
-    <div class="tl-body">Honest performance on a held-out set after all decisions are finalised.</div>
+    <div class="tl-title">Evaluación</div>
+    <div class="tl-body">Rendimiento honesto en un conjunto reservado, una vez que todas las decisiones están finalizadas.</div>
   </div>
 </div>
 ```
@@ -1011,16 +965,16 @@ Modeling is never linear. It is a **cycle** driven by feedback at every stage.
 
   <!-- Feature right -->
   <circle cx="190" cy="110" r="20" fill="#2d6a9f"/>
-  <text x="190" y="108" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Feature</text>
-  <text x="190" y="118" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Eng.</text>
+  <text x="190" y="108" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Ing.</text>
+  <text x="190" y="118" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Caract.</text>
 
   <!-- Tuning bottom -->
   <circle cx="110" cy="190" r="20" fill="#4db6ac"/>
-  <text x="110" y="194" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Tuning</text>
+  <text x="110" y="194" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Ajuste</text>
 
   <!-- Eval left -->
   <circle cx="30"  cy="110" r="20" fill="#4db6ac"/>
-  <text x="30"  y="114" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Eval</text>
+  <text x="30"  y="114" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Eval.</text>
 
   <!-- arrows on track -->
   <path d="M130,32 A80,80 0 0,1 188,90" fill="none" stroke="rgba(45,106,159,0.4)" stroke-width="2" marker-end="url(#arr)"/>
@@ -1048,43 +1002,43 @@ Modeling is never linear. It is a **cycle** driven by feedback at every stage.
 ══════════════════════════════════════════════ -->
 ```
 
-## Case Study: Chicago Transit Authority
+## Caso Práctico: Chicago Transit Authority
 
 ```{=html}
 <p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:1rem;">
-Predicting daily rail ridership — an analyst's internal monologue.
+Predicción de la afluencia diaria en el metro — el monólogo interno de un analista.
 </p>
 
 <div class="card-grid four">
 
   <div class="card">
     <span class="card-icon">📊</span>
-    <div class="card-title">Step 1 · Correlations</div>
-    <div class="card-body">Which stations co-vary? Is ridership autocorrelated? Weekly and monthly seasonality emerges.</div>
+    <div class="card-title">Paso 1 · Correlaciones</div>
+    <div class="card-body">¿Qué estaciones covarían? ¿La afluencia está autocorrelacionada? Emergen estacionalidades semanal y mensual.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🌡️</span>
-    <div class="card-title">Step 2 · Weather</div>
-    <div class="card-body">Temperature and precipitation enter as features. Cold/rainy days suppress ridership non-linearly.</div>
+    <div class="card-title">Paso 2 · Clima</div>
+    <div class="card-body">Temperatura y precipitación se incorporan como características. Los días fríos y lluviosos reducen la afluencia de forma no lineal.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">📅</span>
-    <div class="card-title">Step 3 · Holidays</div>
-    <div class="card-body">Federal and local holidays create sharp dips. Engineered as binary indicator variables.</div>
+    <div class="card-title">Paso 3 · Festivos</div>
+    <div class="card-body">Los días festivos federales y locales generan caídas abruptas. Se codifican como variables indicadoras binarias.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🌲</span>
-    <div class="card-title">Step 4 · Boosted Trees</div>
-    <div class="card-body">XGBoost captures non-linear interactions between weather, calendar, and station-level effects.</div>
+    <div class="card-title">Paso 4 · Boosted Trees</div>
+    <div class="card-body">XGBoost captura interacciones no lineales entre clima, calendario y efectos a nivel de estación.</div>
   </div>
 
 </div>
 
 <div class="concept-box teal" style="margin-top:1rem;">
-  <p>The analyst never fits a model first — every feature is motivated by <strong>domain reasoning</strong> before statistical evidence.</p>
+  <p>El analista nunca ajusta un modelo primero — cada característica está motivada por <strong>razonamiento de dominio</strong> antes que por evidencia estadística.</p>
 </div>
 ```
 
@@ -1094,7 +1048,7 @@ Predicting daily rail ridership — an analyst's internal monologue.
 ══════════════════════════════════════════════ -->
 ```
 
-## Conclusions
+## Conclusiones
 
 ::::: columns
 ::: {.column width="60%"}
@@ -1102,18 +1056,18 @@ Predicting daily rail ridership — an analyst's internal monologue.
 <div style="display:flex;flex-direction:column;gap:0.85rem;margin-top:0.5rem;">
 
   <div class="concept-box">
-    <p>🔄 <strong>Modeling is iterative</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">EDA, feature engineering, tuning, and evaluation form a cycle — not a sequence.</span></p>
+    <p>🔄 <strong>El modelado es iterativo</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">EDA, ingeniería de características, ajuste y evaluación forman un ciclo — no una secuencia.</span></p>
   </div>
 
   <div class="concept-box">
-    <p>🧰 <strong>Software shapes practice</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">Good tools enforce reproducibility, protect against leakage, and make correct practice the default.</span></p>
+    <p>🧰 <strong>El software moldea la práctica</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">Las buenas herramientas garantizan la reproducibilidad, protegen contra el data leakage y hacen de la práctica correcta el comportamiento por defecto.</span></p>
   </div>
 
   <div class="concept-box teal">
-    <p>🤝 <strong>ML and statistics are complementary</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">Machine learning provides predictive fidelity; statistics provides inferential rigour. Both are needed.</span></p>
+    <p>🤝 <strong>ML y estadística son complementarios</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">El machine learning aporta fidelidad predictiva; la estadística aporta rigor inferencial. Ambos son necesarios.</span></p>
   </div>
 
 </div>
@@ -1124,7 +1078,7 @@ Predicting daily rail ridership — an analyst's internal monologue.
 ```{=html}
 <div style="background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1.6rem;margin-top:0.5rem;text-align:center;">
   <div style="font-family:var(--serif);font-size:1.4rem;color:var(--ink);line-height:1.3;margin-bottom:1rem;">
-    "All models are wrong, but some are useful."
+    "Todos los modelos están equivocados, pero algunos son útiles."
   </div>
   <div style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;">
     — George E. P. Box, 1976
@@ -1132,8 +1086,8 @@ Predicting daily rail ridership — an analyst's internal monologue.
   <div style="margin-top:1.4rem;">
     <div class="pill-row" style="justify-content:center;">
       <span class="pill">tidymodels</span>
-      <span class="pill">reproducibility</span>
-      <span class="pill teal">iteration</span>
+      <span class="pill">reproducibilidad</span>
+      <span class="pill teal">iteración</span>
     </div>
   </div>
 </div>
@@ -1151,11 +1105,11 @@ Predicting daily rail ridership — an analyst's internal monologue.
 
 ```{=html}
 <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;gap:0;">
-  <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.18em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:1.2rem;">Questions & Discussion</div>
-  <div style="font-family:var(--serif);font-size:3.4rem;color:#fff;line-height:1.1;margin-bottom:1.2rem;">Thank you.</div>
+  <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.18em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:1.2rem;">Preguntas y Discusión</div>
+  <div style="font-family:var(--serif);font-size:3.4rem;color:#fff;line-height:1.1;margin-bottom:1.2rem;">Gracias.</div>
   <div style="width:60px;height:3px;background:linear-gradient(90deg,#2d6a9f,#4db6ac);border-radius:2px;margin-bottom:2rem;"></div>
   <div style="font-family:var(--sans);font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.8;">
-    References:<br>
+    Referencias:<br>
     Kuhn, M. &amp; Silge, J. (2022). <em>Tidy Modeling with R.</em> O'Reilly.<br>
     James, G. et al. (2021). <em>An Introduction to Statistical Learning.</em> Springer.<br>
     Box, G. E. P. (1976). Science and Statistics. <em>JASA</em>, 71(356).
