@@ -2,7 +2,7 @@
 
 > Presentación académica de Machine Learning y modelado estadístico desarrollada con Quarto + RevealJS sobre el ecosistema R.
 
----
+------------------------------------------------------------------------
 
 ## Descripción general
 
@@ -12,7 +12,7 @@ El proyecto toma como referencia principal el libro *Tidy Modeling with R* (Kuhn
 
 El repositorio está diseñado para crecer de forma colaborativa y estructurada, sirviendo tanto como material de exposición como referencia técnica para el equipo.
 
----
+------------------------------------------------------------------------
 
 ## Objetivos
 
@@ -21,12 +21,12 @@ El repositorio está diseñado para crecer de forma colaborativa y estructurada,
 - Desarrollar competencias en comunicación técnica y científica mediante presentaciones reproducibles.
 - Construir un repositorio colaborativo que pueda extenderse con nuevos capítulos y visualizaciones.
 
----
+------------------------------------------------------------------------
 
 ## Tecnologías utilizadas
 
 | Tecnología | Rol en el proyecto |
-|---|---|
+|------------------------------------|------------------------------------|
 | [Quarto](https://quarto.org/) | Sistema de publicación científica y técnica |
 | [R](https://www.r-project.org/) | Lenguaje de análisis estadístico y modelado |
 | [RevealJS](https://revealjs.com/) | Motor de presentaciones HTML interactivas |
@@ -34,11 +34,11 @@ El repositorio está diseñado para crecer de forma colaborativa y estructurada,
 | [tidymodels](https://www.tidymodels.org/) | Framework unificado de modelado en R |
 | Git / GitHub | Control de versiones y colaboración distribuida |
 
----
+------------------------------------------------------------------------
 
 ## Estructura del proyecto
 
-```txt
+``` txt
 ML-Tidy-Modeling/
 │
 ├── index.qmd          # Presentación principal (Capítulo 1)
@@ -58,7 +58,7 @@ ML-Tidy-Modeling/
 - **`styles.css`** — Archivo de estilos opcionales complementarios al CSS embebido en las presentaciones.
 - **`README.md`** — Este archivo. Documentación técnica y guía de colaboración.
 
----
+------------------------------------------------------------------------
 
 ## Cómo ejecutar el proyecto
 
@@ -68,13 +68,13 @@ ML-Tidy-Modeling/
 - [Quarto CLI](https://quarto.org/docs/get-started/) instalado (≥ 1.4)
 - Paquetes R necesarios:
 
-```r
+``` r
 install.packages(c("tidyverse", "tidymodels"))
 ```
 
 ### Renderizar localmente
 
-```bash
+``` bash
 # Renderizar la presentación principal
 quarto render index.qmd
 
@@ -84,36 +84,36 @@ quarto render
 
 ### Previsualizar en el navegador
 
-```bash
+``` bash
 quarto preview index.qmd
 ```
 
 ### Publicar en Quarto Pub
 
-```bash
+``` bash
 quarto publish quarto-pub
 ```
 
 ### Publicar en GitHub Pages
 
-```bash
+``` bash
 quarto publish gh-pages
 ```
 
----
+------------------------------------------------------------------------
 
 ## Flujo de trabajo recomendado
 
 Para mantener la calidad y consistencia del proyecto, se recomienda seguir este flujo antes de cada contribución:
 
-1. **Trabajar en una rama separada** — No hacer cambios directamente en `main`.
-2. **Renderizar antes de subir** — Verificar que `quarto render` no genera errores.
-3. **Commits descriptivos** — Usar mensajes claros que indiquen qué se modificó y en qué capítulo.
-4. **Mantener consistencia visual** — Respetar la paleta de colores, tipografía y componentes CSS definidos en la presentación.
-5. **No modificar `_quarto.yml`** sin acuerdo del equipo — Cambios en ese archivo afectan todo el proyecto.
-6. **Usar rutas relativas** — Evitar rutas absolutas para garantizar compatibilidad entre sistemas.
+1.  **Trabajar en una rama separada** — No hacer cambios directamente en `main`.
+2.  **Renderizar antes de subir** — Verificar que `quarto render` no genera errores.
+3.  **Commits descriptivos** — Usar mensajes claros que indiquen qué se modificó y en qué capítulo.
+4.  **Mantener consistencia visual** — Respetar la paleta de colores, tipografía y componentes CSS definidos en la presentación.
+5.  **No modificar `_quarto.yml`** sin acuerdo del equipo — Cambios en ese archivo afectan todo el proyecto.
+6.  **Usar rutas relativas** — Evitar rutas absolutas para garantizar compatibilidad entre sistemas.
 
-```bash
+``` bash
 # Ejemplo de flujo completo
 git checkout -b capitulo-2/feature-ingenieria
 # ... hacer cambios ...
@@ -123,7 +123,7 @@ git commit -m "feat(cap2): agrega diapositivas de feature engineering"
 git push origin capitulo-2/feature-ingenieria
 ```
 
----
+------------------------------------------------------------------------
 
 ## Reglas de colaboración
 
@@ -137,7 +137,7 @@ Para garantizar la integridad del proyecto, todos los colaboradores deben respet
 
 Ejemplo de `.gitignore` recomendado:
 
-```gitignore
+``` gitignore
 /.quarto
 /_site
 *.html
@@ -146,30 +146,30 @@ Ejemplo de `.gitignore` recomendado:
 .RData
 ```
 
----
+------------------------------------------------------------------------
 
 ## Integrantes
 
 | Nombre | Rol | Contacto |
-|---|---|---|
-| — | — | — |
-| — | — | — |
-| — | — | — |
-| — | — | — |
+|--------|-----|----------|
+| —      | —   | —        |
+| —      | —   | —        |
+| —      | —   | —        |
+| —      | —   | —        |
 
 > Completar con los nombres, roles y correos del equipo.
 
----
+------------------------------------------------------------------------
 
 ## Capítulos del proyecto
 
-| # | Título | Estado | Archivo |
-|---|---|---|---|
-| 1 | Software for Modeling | ✅ Completo | `index.qmd` |
-| 2 | *(próximo capítulo)* | 🔲 Pendiente | — |
-| 3 | *(próximo capítulo)* | 🔲 Pendiente | — |
+| \#  | Título                | Estado       | Archivo     |
+|-----|-----------------------|--------------|-------------|
+| 1   | Software for Modeling | ✅ Completo  | `index.qmd` |
+| 2   | *(próximo capítulo)*  | 🔲 Pendiente | —           |
+| 3   | *(próximo capítulo)*  | 🔲 Pendiente | —           |
 
----
+------------------------------------------------------------------------
 
 ## Futuras mejoras
 
@@ -181,7 +181,7 @@ El proyecto está diseñado para escalar. Entre las extensiones planificadas se 
 - **Casos prácticos** — Incluir datasets reales y análisis end-to-end reproducibles.
 - **Publicación web** — Despliegue continuo en Quarto Pub o GitHub Pages con cada actualización del repositorio.
 
----
+------------------------------------------------------------------------
 
 ## Referencias
 
@@ -190,8 +190,10 @@ El proyecto está diseñado para escalar. Entre las extensiones planificadas se 
 - Quarto Documentation. [quarto.org/docs](https://quarto.org/docs/guide/)
 - Tidymodels. [tidymodels.org](https://www.tidymodels.org/)
 
----
+------------------------------------------------------------------------
 
 <p align="center">
-  Proyecto académico · Quarto + R + RevealJS
+
+Proyecto académico · Quarto + R + RevealJS
+
 </p>
