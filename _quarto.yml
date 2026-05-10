@@ -1,0 +1,10 @@
+project:
+  type: default
+  title: "ML-Tidy-Modeling"
+
+editor: visual
+
+execute:
+  echo: false
+  warning: false
+  message: false

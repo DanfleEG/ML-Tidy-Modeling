@@ -1,0 +1,1164 @@
+---
+title: "Software for Modeling"
+subtitle: "Foundations of Statistical Modeling and Machine Learning"
+author: "Danilo David Estrella Guerra"
+format:
+  revealjs:
+    theme: default
+    transition: fade
+    transition-speed: slow
+    background-transition: fade
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    controls: false
+    center: true
+    width: 1400
+    height: 788
+    margin: 0.1
+    min-scale: 0.5
+    max-scale: 2.0
+    chalkboard: false
+    highlight-style: github
+    code-line-numbers: false
+    fig-align: center
+    df-print: kable
+    html-math-method: mathjax
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+---
+
+```{=html}
+<style>
+/* ─────────────────────────────────────────────
+   GLOBAL TOKENS
+───────────────────────────────────────────── */
+:root {
+  --bg:        #f8f7f4;
+  --surface:   #ffffff;
+  --ink:       #1a1a2e;
+  --ink-muted: #5c5c7a;
+  --accent:    #2d6a9f;
+  --accent2:   #4db6ac;
+  --rule:      rgba(45, 106, 159, 0.18);
+  --mono:      'JetBrains Mono', monospace;
+  --serif:     'DM Serif Display', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   BASE TYPOGRAPHY
+───────────────────────────────────────────── */
+.reveal {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.reveal h1 { font-size: 2.6rem; }
+.reveal h2 { font-size: 1.9rem; border-bottom: 1.5px solid var(--rule); padding-bottom: 0.4em; margin-bottom: 0.8em; }
+.reveal h3 { font-size: 1.25rem; color: var(--accent); font-family: var(--sans); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.85rem; }
+.reveal p, .reveal li { font-size: 1.05rem; line-height: 1.75; color: var(--ink); font-weight: 300; }
+.reveal strong { font-weight: 500; color: var(--accent); }
+.reveal code { font-family: var(--mono); font-size: 0.88em; background: rgba(45,106,159,0.08); padding: 0.1em 0.35em; border-radius: 3px; color: var(--accent); }
+
+/* ─────────────────────────────────────────────
+   SLIDE LAYOUT
+───────────────────────────────────────────── */
+.reveal .slides section {
+  padding: 2.5rem 3.5rem;
+  text-align: left;
+}
+
+/* ─────────────────────────────────────────────
+   COVER SLIDE
+───────────────────────────────────────────── */
+.cover-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  gap: 0;
+}
+.cover-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0.85;
+}
+.cover-title {
+  font-family: var(--serif);
+  font-size: 4rem;
+  color: var(--ink);
+  line-height: 1.08;
+  margin: 0 0 0.5rem 0;
+}
+.cover-sub {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  margin-bottom: 2.8rem;
+}
+.cover-rule {
+  width: 64px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  margin-bottom: 2.2rem;
+}
+.cover-meta {
+  display: flex;
+  gap: 2.5rem;
+}
+.cover-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.cover-meta-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+.cover-meta-value {
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-weight: 400;
+}
+.cover-deco {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.04;
+  font-family: var(--serif);
+  font-size: 18rem;
+  color: var(--accent);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   CARD GRID
+───────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.card-grid.four { grid-template-columns: repeat(4, 1fr); }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.card-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.card-title {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.card-body {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────
+   EQUATION BLOCK
+───────────────────────────────────────────── */
+.eq-block {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 1.2rem 1.8rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 12px rgba(45,106,159,0.06);
+}
+.eq-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   CONCEPT BOX / CALLOUT
+───────────────────────────────────────────── */
+.concept-box {
+  background: rgba(45,106,159,0.05);
+  border: 1px solid rgba(45,106,159,0.2);
+  border-radius: 8px;
+  padding: 1.1rem 1.5rem;
+  margin: 0.8rem 0;
+}
+.concept-box.teal {
+  background: rgba(77,182,172,0.06);
+  border-color: rgba(77,182,172,0.25);
+}
+.concept-box p { margin: 0; font-size: 0.95rem; }
+
+/* ─────────────────────────────────────────────
+   PILL TAGS
+───────────────────────────────────────────── */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.pill {
+  background: rgba(45,106,159,0.1);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.25em 0.75em;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+.pill.teal { background: rgba(77,182,172,0.12); color: #2a9d8f; }
+
+/* ─────────────────────────────────────────────
+   TAXONOMY / MERMAID WRAPPERS
+───────────────────────────────────────────── */
+.mermaid-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   COMPARISON TABLE
+───────────────────────────────────────────── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+.compare-table th {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--rule);
+  text-align: left;
+}
+.compare-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(45,106,159,0.03); }
+
+/* ─────────────────────────────────────────────
+   ECOSYSTEM STACK
+───────────────────────────────────────────── */
+.eco-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 1rem;
+}
+.eco-layer {
+  width: 340px;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  position: relative;
+}
+.eco-layer.l1 { background: #1a1a2e; color: #fff; font-family: var(--mono); font-weight: 400; font-size: 1.1rem; letter-spacing: 0.08em; }
+.eco-layer.l2 { background: #2d6a9f; color: #fff; font-family: var(--sans); font-weight: 400; font-size: 1rem; width: 310px; }
+.eco-layer.l3 { background: #4db6ac; color: #fff; font-family: var(--sans); font-weight: 400; font-size: 1rem; width: 280px; }
+.eco-arrow {
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+  padding: 0.1rem 0;
+  line-height: 1;
+}
+.eco-caption {
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+/* ─────────────────────────────────────────────
+   TIMELINE / ANALYST FLOW
+───────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  position: relative;
+  padding-left: 1.6rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1.5px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+}
+.tl-item {
+  position: relative;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.27rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.tl-title {
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.tl-body {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE NUMBER & PROGRESS
+───────────────────────────────────────────── */
+.reveal .progress { background: rgba(45,106,159,0.12); height: 2px; }
+.reveal .progress span { background: var(--accent); }
+.reveal .slide-number { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-muted); background: transparent; }
+
+/* ─────────────────────────────────────────────
+   MERMAID THEME OVERRIDE
+───────────────────────────────────────────── */
+.reveal .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════════════ -->
+```
+
+##  {.noframenumbering background-color="#f8f7f4"}
+
+```{=html}
+<div class="cover-deco">Σ</div>
+<div class="cover-wrap">
+  <div class="cover-eyebrow">Applied Machine Learning · Chapter 1</div>
+  <div class="cover-title">Software for<br>Modeling</div>
+  <div class="cover-sub">Foundations of Statistical Modeling and Machine Learning</div>
+  <div class="cover-rule"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Context</span>
+      <span class="cover-meta-value">Tidy Modeling with R</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Duration</span>
+      <span class="cover-meta-value">25 min</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Scope</span>
+      <span class="cover-meta-value">Conceptual · Practical</span>
+    </div>
+  </div>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 — ¿QUÉ ES UN MODELO?
+══════════════════════════════════════════════ -->
+```
+
+## What Is a Model?
+
+::::: columns
+::: {.column width="55%"}
+A **model** is a mathematical representation that captures the essential structure of a complex phenomenon.
+
+<br>
+
+```{=html}
+<div class="eq-block">
+  <div class="eq-label">General Form</div>
+  $$Y = f(X_1, X_2, \ldots, X_p) + \varepsilon$$
+</div>
+```
+
+```{=html}
+<div class="eq-block">
+  <div class="eq-label">Linear Specification</div>
+  $$\hat{Y} = \beta_0 + \sum_{j=1}^{p} \beta_j X_j$$
+</div>
+```
+:::
+
+::: {.column width="45%"}
+```{=html}
+<div style="margin-top: 0.5rem;">
+  <div class="concept-box" style="margin-bottom: 0.7rem;">
+    <p>🔍 <strong>Reductive capacity</strong><br>
+    <span style="font-size:0.85rem; color:var(--ink-muted);">Simplify complex reality into tractable structure</span></p>
+  </div>
+  <div class="concept-box">
+    <p>⚖️ <strong>Bias–Variance trade-off</strong><br>
+    <span style="font-size:0.85rem; color:var(--ink-muted);">All models are wrong; some are useful — Box (1976)</span></p>
+  </div>
+  <div style="margin-top: 1rem;">
+    <div class="pill-row">
+      <span class="pill">Y → outcome</span>
+      <span class="pill">X → predictors</span>
+      <span class="pill">ε → noise</span>
+    </div>
+  </div>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 — MODELOS EN LA VIDA DIARIA
+══════════════════════════════════════════════ -->
+```
+
+## Models in Everyday Life
+
+```{=html}
+<p style="font-size:0.92rem; color:var(--ink-muted); margin-bottom:1.2rem;">
+Predictive models shape the decisions of billions of users every day.
+</p>
+
+<div class="card-grid four">
+
+  <div class="card">
+    <span class="card-icon">🎬</span>
+    <div class="card-title">Netflix</div>
+    <div class="card-body">Collaborative filtering and NLP to surface the next show you'll watch.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🎵</span>
+    <div class="card-title">Spotify</div>
+    <div class="card-body">Audio features + graph embeddings for personalised playlist generation.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🛡️</span>
+    <div class="card-title">Fraud Detection</div>
+    <div class="card-body">Real-time anomaly scoring on millions of transactions per second.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🌦️</span>
+    <div class="card-title">Weather Forecast</div>
+    <div class="card-body">Ensemble numerical models with deep-learning post-processing layers.</div>
+  </div>
+
+</div>
+
+<div class="concept-box teal" style="margin-top:1.2rem;">
+  <p>In every case: <strong>structured data + algorithmic function → actionable prediction.</strong></p>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — FUNDAMENTOS DEL SOFTWARE
+══════════════════════════════════════════════ -->
+```
+
+## Principles of Modeling Software
+
+::::: columns
+::: {.column width="52%"}
+Good modeling software should guide practitioners towards correct practice by **default**.
+
+<br>
+
+```{=html}
+<div class="timeline">
+
+  <div class="tl-item">
+    <div class="tl-title">Ease of Use</div>
+    <div class="tl-body">Fluent, expressive syntax that maps to statistical concepts.</div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-title">Reproducibility</div>
+    <div class="tl-body">Seeds, versioned recipes, and serialisable workflows.</div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-title">Error Protection</div>
+    <div class="tl-body">Guard-rails against data leakage and invalid preprocessing order.</div>
+  </div>
+
+</div>
+```
+:::
+
+::: {.column width="48%"}
+```{=html}
+<div style="background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.4rem; margin-top:0.5rem;">
+  <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Pit of Success</div>
+
+  <!-- Pit diagram -->
+  <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+    <!-- funnel shape -->
+    <path d="M10,20 L140,140 L270,20 Z" fill="rgba(45,106,159,0.08)" stroke="rgba(45,106,159,0.3)" stroke-width="1.5"/>
+    <!-- wrong path left -->
+    <text x="30" y="55" font-family="DM Sans,sans-serif" font-size="9" fill="#5c5c7a">Wrong path</text>
+    <!-- success dot -->
+    <circle cx="140" cy="134" r="9" fill="var(--accent2)" opacity="0.9"/>
+    <text x="112" y="155" font-family="DM Sans,sans-serif" font-size="9" fill="var(--accent2)">✓ Correct practice</text>
+    <!-- labels -->
+    <text x="55" y="35" font-family="JetBrains Mono,monospace" font-size="8" fill="var(--ink-muted)">many failure modes</text>
+    <text x="160" y="35" font-family="JetBrains Mono,monospace" font-size="8" fill="var(--ink-muted)">many failure modes</text>
+    <line x1="140" y1="20" x2="140" y2="125" stroke="rgba(45,106,159,0.2)" stroke-dasharray="3,3"/>
+    <text x="108" y="16" font-family="DM Sans,sans-serif" font-size="9" font-weight="500" fill="var(--ink)">Default path</text>
+  </svg>
+
+  <p style="font-size:0.75rem; color:var(--ink-muted); margin:0; text-align:center; margin-top:0.3rem;">
+  Defaults channel analysts toward statistically sound choices.
+  </p>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — ECOSISTEMA R
+══════════════════════════════════════════════ -->
+```
+
+## The R Ecosystem
+
+::::: columns
+::: {.column width="48%"}
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="eco-stack">
+    <div class="eco-layer l1">
+      R
+      <div class="eco-caption">Statistical computing foundation</div>
+    </div>
+    <div class="eco-arrow">↓</div>
+    <div class="eco-layer l2">
+      tidyverse
+      <div class="eco-caption">Coherent data grammar</div>
+    </div>
+    <div class="eco-arrow">↓</div>
+    <div class="eco-layer l3">
+      tidymodels
+      <div class="eco-caption">Unified modeling interface</div>
+    </div>
+  </div>
+</div>
+```
+:::
+
+::: {.column width="52%"}
+```{=html}
+<div style="margin-top:0.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+
+  <div class="concept-box">
+    <p>📦 <strong>Consistent grammar</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);">Every package speaks the same design language — tibbles, pipes, tidy evaluation.</span></p>
+  </div>
+
+  <div class="concept-box">
+    <p>🔁 <strong>Reproducible workflows</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);">Recipes encode all preprocessing steps; models are serialisable objects.</span></p>
+  </div>
+
+  <div class="concept-box teal">
+    <p>🧩 <strong>Modular & extensible</strong><br>
+    <span style="font-size:0.83rem;color:var(--ink-muted);"><code>parsnip</code> → model specs · <code>recipes</code> → feature engineering · <code>yardstick</code> → metrics</span></p>
+  </div>
+
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 6 — TAXONOMÍA (MAPA CONCEPTUAL)
+══════════════════════════════════════════════ -->
+```
+
+## Taxonomy of Models
+
+```{=html}
+<p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:0.8rem;">
+Three primary objectives drive every modeling effort.
+</p>
+```
+
+```{mermaid}
+%%| fig-width: 11
+%%| fig-height: 4.2
+%%{ init: { 'theme': 'base', 'themeVariables': { 'primaryColor': '#2d6a9f', 'primaryTextColor': '#1a1a2e', 'primaryBorderColor': '#2d6a9f', 'lineColor': '#94a3b8', 'secondaryColor': '#f1f5f9', 'background': '#f8f7f4', 'mainBkg': '#f8f7f4', 'fontFamily': 'sans-serif', 'fontSize': '15px' } } }%%
+graph TD
+    M["🗂 Models"]:::root
+
+    M --> D["📈 Descriptive"]:::blue
+    M --> I["🔬 Inferential"]:::blue
+    M --> P["🎯 Predictive"]:::blue
+
+    D --> D1["Trend detection"]:::leafBlue
+    D --> D2["Pattern exploration"]:::leafBlue
+    D --> D3["LOESS / Smoothing"]:::leafBlue
+
+    I --> I1["Hypothesis testing"]:::leafBlue
+    I --> I2["Confidence intervals"]:::leafBlue
+    I --> I3["Causal inference"]:::leafBlue
+
+    P --> P1["Mechanistic"]:::leafTeal
+    P --> P2["Empirical / ML"]:::leafTeal
+    P --> P3["Generalisation"]:::leafTeal
+
+    classDef root fill:#1a1a2e,color:#ffffff,stroke:#1a1a2e,rx:8,font-size:16px,font-weight:bold
+    classDef blue fill:#2d6a9f,color:#ffffff,stroke:#1a4f7a,rx:6,font-size:14px,font-weight:600
+    classDef leafBlue fill:#dbeafe,color:#1e3a5f,stroke:#93c5fd,rx:5,font-size:13px
+    classDef leafTeal fill:#ccfbf1,color:#134e4a,stroke:#5eead4,rx:5,font-size:13px
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — MODELOS DESCRIPTIVOS
+══════════════════════════════════════════════ -->
+```
+
+## Descriptive Models
+
+::::: columns
+::: {.column width="54%"}
+**Goal:** understand *what is there*, not why.
+
+<br>
+
+```{=html}
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-title">Trend Detection</div>
+    <div class="tl-body">Summarise central tendency and direction over time or across groups.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-title">LOESS Smoothing</div>
+    <div class="tl-body">Locally-weighted regression reveals non-linear patterns without parametric assumptions.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-title">Pattern Exploration</div>
+    <div class="tl-body">EDA-driven — the model serves the analyst's curiosity, not an external standard.</div>
+  </div>
+</div>
+```
+:::
+
+::: {.column width="46%"}
+```{=html}
+<!-- Conceptual scatter + LOESS SVG -->
+<div style="background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1rem;margin-top:0.5rem;">
+<svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <!-- axis -->
+  <line x1="24" y1="155" x2="230" y2="155" stroke="#5c5c7a" stroke-width="1"/>
+  <line x1="24" y1="10"  x2="24"  y2="155" stroke="#5c5c7a" stroke-width="1"/>
+  <text x="120" y="175" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#5c5c7a">X</text>
+  <text x="10"  y="85"  text-anchor="middle" font-family="DM Sans" font-size="9" fill="#5c5c7a" transform="rotate(-90,10,85)">Y</text>
+  <!-- scatter points -->
+  <circle cx="40"  cy="130" r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="55"  cy="118" r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="70"  cy="105" r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="85"  cy="92"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="100" cy="80"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="115" cy="75"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="130" cy="65"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="145" cy="72"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="160" cy="60"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="175" cy="55"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="190" cy="50"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <circle cx="205" cy="45"  r="3" fill="rgba(45,106,159,0.35)"/>
+  <!-- LOESS curve -->
+  <path d="M36,133 C60,110 80,95 110,78 C135,64 160,57 210,42"
+        fill="none" stroke="#4db6ac" stroke-width="2.2" stroke-linecap="round"/>
+  <text x="155" y="38" font-family="JetBrains Mono" font-size="8" fill="#4db6ac">LOESS</text>
+</svg>
+<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Non-parametric trend without distributional assumptions</p>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 — MODELOS INFERENCIALES
+══════════════════════════════════════════════ -->
+```
+
+## Inferential Models
+
+::::: columns
+::: {.column width="54%"}
+**Goal:** draw conclusions about a *population* from a *sample*.
+
+<br>
+
+```{=html}
+<table class="compare-table">
+<thead><tr><th>Concept</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Hypothesis</strong></td><td>H₀ vs Hₐ — formal claim about a parameter</td></tr>
+<tr><td><strong>p-value</strong></td><td>P(data | H₀) — probability under the null</td></tr>
+<tr><td><strong>CI</strong></td><td>Range of plausible parameter values</td></tr>
+<tr><td><strong>Assumptions</strong></td><td>Normality, independence, homoscedasticity</td></tr>
+</tbody>
+</table>
+```
+:::
+
+::: {.column width="46%"}
+```{=html}
+<!-- Normal distribution SVG -->
+<div style="background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1rem;margin-top:0.5rem;">
+<svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <!-- shaded rejection region right -->
+  <path d="M185,20 Q200,140 215,148 L215,148 L185,148 Z" fill="rgba(45,106,159,0.15)"/>
+  <!-- normal curve -->
+  <path d="M15,145 Q30,145 50,140 Q80,125 100,60 Q120,5 140,60 Q160,125 185,140 Q205,148 225,148"
+        fill="rgba(45,106,159,0.08)" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  <!-- axis -->
+  <line x1="15" y1="148" x2="225" y2="148" stroke="#5c5c7a" stroke-width="1"/>
+  <!-- critical value -->
+  <line x1="185" y1="20" x2="185" y2="148" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="186" y="18" font-family="JetBrains Mono" font-size="8" fill="var(--accent)">α</text>
+  <!-- CI bracket -->
+  <line x1="70" y1="155" x2="180" y2="155" stroke="var(--accent2)" stroke-width="2"/>
+  <line x1="70" y1="151" x2="70"  y2="158" stroke="var(--accent2)" stroke-width="2"/>
+  <line x1="180" y1="151" x2="180" y2="158" stroke="var(--accent2)" stroke-width="2"/>
+  <text x="115" y="168" text-anchor="middle" font-family="DM Sans" font-size="8" fill="var(--accent2)">95% CI</text>
+  <text x="120" y="148" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#5c5c7a">μ</text>
+</svg>
+<p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin:0;">Null distribution with rejection region and confidence interval</p>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 — MODELOS PREDICTIVOS
+══════════════════════════════════════════════ -->
+```
+
+## Predictive Models
+
+```{=html}
+<p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">
+<strong>Goal:</strong> maximise accuracy on <em>new, unseen</em> data — not just explain existing observations.
+</p>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Mechanistic</div>
+    <div class="card-body" style="font-size:0.88rem;">
+      Grounded in domain theory.<br><br>
+      • Parameters have physical meaning<br>
+      • Extrapolates more safely<br>
+      • Requires strong assumptions<br><br>
+      <em style="font-size:0.8rem;color:var(--ink-muted);">Example: pharmacokinetic dose-response</em>
+    </div>
+    <div class="pill-row" style="margin-top:0.8rem;">
+      <span class="pill">ODE-based</span>
+      <span class="pill">Theory-driven</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent2);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;">Empirical / ML</div>
+    <div class="card-body" style="font-size:0.88rem;">
+      Learned from data patterns alone.<br><br>
+      • Parameters are latent / opaque<br>
+      • Excels at interpolation<br>
+      • Requires large samples<br><br>
+      <em style="font-size:0.8rem;color:var(--ink-muted);">Example: gradient boosted trees</em>
+    </div>
+    <div class="pill-row" style="margin-top:0.8rem;">
+      <span class="pill teal">Data-driven</span>
+      <span class="pill teal">High fidelity</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="concept-box" style="margin-top:0.9rem;">
+  <p>Both types share a common imperative: <strong>generalisation</strong> — performance on data the model has never seen.</p>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 — TERMINOLOGÍA
+══════════════════════════════════════════════ -->
+```
+
+## Modeling Terminology
+
+::::: columns
+::: {.column width="50%"}
+### Learning Paradigm
+
+```{=html}
+<table class="compare-table" style="margin-top:0.5rem;">
+<thead><tr><th>Supervised</th><th>Unsupervised</th></tr></thead>
+<tbody>
+<tr><td>Known outcome Y</td><td>No outcome label</td></tr>
+<tr><td>Learn f(X) → Y</td><td>Learn structure of X</td></tr>
+<tr><td>Regression, Classification</td><td>Clustering, Dim. reduction</td></tr>
+<tr><td>Ground-truth evaluation</td><td>Intrinsic evaluation</td></tr>
+</tbody>
+</table>
+```
+:::
+
+::: {.column width="50%"}
+### Task Type
+
+```{=html}
+<table class="compare-table" style="margin-top:0.5rem;">
+<thead><tr><th>Regression</th><th>Classification</th></tr></thead>
+<tbody>
+<tr><td>Numeric outcome</td><td>Categorical outcome</td></tr>
+<tr><td>RMSE, MAE, R²</td><td>Accuracy, AUC, F1</td></tr>
+<tr><td>House prices</td><td>Spam detection</td></tr>
+<tr><td>Continuous ŷ</td><td>Probability → class</td></tr>
+</tbody>
+</table>
+```
+:::
+:::::
+
+```{=html}
+<div class="concept-box teal" style="margin-top:0.9rem;">
+  <p>Choosing the right paradigm <em>before</em> touching data is the first critical modeling decision.</p>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 11 — PIPELINE (FLUJOGRAMA)
+══════════════════════════════════════════════ -->
+```
+
+## Data Analysis Pipeline
+
+```{=html}
+<p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:0.8rem;">
+A rigorous workflow guards against the most common sources of modeling error.
+</p>
+```
+
+```{mermaid}
+%%| fig-width: 11
+%%| fig-height: 3.5
+%%{ init: { 'theme': 'base', 'themeVariables': { 'primaryColor': '#2d6a9f', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#1a4f7a', 'lineColor': '#5c5c7a', 'secondaryColor': '#f8f7f4', 'background': '#f8f7f4', 'mainBkg': '#f8f7f4', 'fontFamily': 'DM Sans, sans-serif' } } }%%
+flowchart LR
+    A[🧹 Data Cleaning] --> B[🔍 EDA]
+    B --> C[⚙️ Feature\nEngineering]
+    C --> D[🤖 Modeling]
+    D --> E[🎛️ Tuning]
+    E --> F[📊 Evaluation]
+    F -->|iterate| B
+
+    style A fill:#1a1a2e,color:#fff,stroke:#1a1a2e,rx:6
+    style B fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
+    style C fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
+    style D fill:#2d6a9f,color:#fff,stroke:#1a4f7a,rx:6
+    style E fill:#4db6ac,color:#fff,stroke:#2a9d8f,rx:6
+    style F fill:#4db6ac,color:#fff,stroke:#2a9d8f,rx:6
+```
+
+```{=html}
+<div class="pill-row" style="margin-top:0.6rem;">
+  <span class="pill">recipes</span>
+  <span class="pill">parsnip</span>
+  <span class="pill">tune</span>
+  <span class="pill">yardstick</span>
+  <span class="pill">workflows</span>
+  <span class="pill">rsample</span>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 12 — MODELADO ITERATIVO
+══════════════════════════════════════════════ -->
+```
+
+## Iterative Modeling
+
+::::: columns
+::: {.column width="50%"}
+Modeling is never linear. It is a **cycle** driven by feedback at every stage.
+
+<br>
+
+```{=html}
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-title">EDA</div>
+    <div class="tl-body">Distributions, correlations, outliers — what does the data tell us before we ask?</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-title">Feature Engineering</div>
+    <div class="tl-body">Transformations, interactions, and encodings that inject domain knowledge.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-title">Tuning</div>
+    <div class="tl-body">Hyperparameter search over a resampling scheme — never on the test set.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-title">Evaluation</div>
+    <div class="tl-body">Honest performance on a held-out set after all decisions are finalised.</div>
+  </div>
+</div>
+```
+:::
+
+::: {.column width="50%"}
+```{=html}
+<!-- Iterative cycle SVG -->
+<div style="background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.2rem;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;">
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="width:85%;height:auto;">
+  <!-- circle track -->
+  <circle cx="110" cy="110" r="80" fill="none" stroke="rgba(45,106,159,0.12)" stroke-width="28"/>
+
+  <!-- nodes -->
+  <!-- EDA top -->
+  <circle cx="110" cy="30"  r="20" fill="#2d6a9f"/>
+  <text x="110" y="34" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">EDA</text>
+
+  <!-- Feature right -->
+  <circle cx="190" cy="110" r="20" fill="#2d6a9f"/>
+  <text x="190" y="108" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Feature</text>
+  <text x="190" y="118" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Eng.</text>
+
+  <!-- Tuning bottom -->
+  <circle cx="110" cy="190" r="20" fill="#4db6ac"/>
+  <text x="110" y="194" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Tuning</text>
+
+  <!-- Eval left -->
+  <circle cx="30"  cy="110" r="20" fill="#4db6ac"/>
+  <text x="30"  y="114" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Eval</text>
+
+  <!-- arrows on track -->
+  <path d="M130,32 A80,80 0 0,1 188,90" fill="none" stroke="rgba(45,106,159,0.4)" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M188,130 A80,80 0 0,1 130,188" fill="none" stroke="rgba(45,106,159,0.4)" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M90,188 A80,80 0 0,1 32,130" fill="none" stroke="rgba(77,182,172,0.5)" stroke-width="2" marker-end="url(#arr2)"/>
+  <path d="M32,90 A80,80 0 0,1 90,32" fill="none" stroke="rgba(77,182,172,0.5)" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <defs>
+    <marker id="arr"  markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(45,106,159,0.6)"/>
+    </marker>
+    <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(77,182,172,0.7)"/>
+    </marker>
+  </defs>
+</svg>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 13 — CASO PRÁCTICO: CHICAGO TRANSIT
+══════════════════════════════════════════════ -->
+```
+
+## Case Study: Chicago Transit Authority
+
+```{=html}
+<p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:1rem;">
+Predicting daily rail ridership — an analyst's internal monologue.
+</p>
+
+<div class="card-grid four">
+
+  <div class="card">
+    <span class="card-icon">📊</span>
+    <div class="card-title">Step 1 · Correlations</div>
+    <div class="card-body">Which stations co-vary? Is ridership autocorrelated? Weekly and monthly seasonality emerges.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🌡️</span>
+    <div class="card-title">Step 2 · Weather</div>
+    <div class="card-body">Temperature and precipitation enter as features. Cold/rainy days suppress ridership non-linearly.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">📅</span>
+    <div class="card-title">Step 3 · Holidays</div>
+    <div class="card-body">Federal and local holidays create sharp dips. Engineered as binary indicator variables.</div>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🌲</span>
+    <div class="card-title">Step 4 · Boosted Trees</div>
+    <div class="card-body">XGBoost captures non-linear interactions between weather, calendar, and station-level effects.</div>
+  </div>
+
+</div>
+
+<div class="concept-box teal" style="margin-top:1rem;">
+  <p>The analyst never fits a model first — every feature is motivated by <strong>domain reasoning</strong> before statistical evidence.</p>
+</div>
+```
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 14 — CONCLUSIONES
+══════════════════════════════════════════════ -->
+```
+
+## Conclusions
+
+::::: columns
+::: {.column width="60%"}
+```{=html}
+<div style="display:flex;flex-direction:column;gap:0.85rem;margin-top:0.5rem;">
+
+  <div class="concept-box">
+    <p>🔄 <strong>Modeling is iterative</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">EDA, feature engineering, tuning, and evaluation form a cycle — not a sequence.</span></p>
+  </div>
+
+  <div class="concept-box">
+    <p>🧰 <strong>Software shapes practice</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">Good tools enforce reproducibility, protect against leakage, and make correct practice the default.</span></p>
+  </div>
+
+  <div class="concept-box teal">
+    <p>🤝 <strong>ML and statistics are complementary</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">Machine learning provides predictive fidelity; statistics provides inferential rigour. Both are needed.</span></p>
+  </div>
+
+</div>
+```
+:::
+
+::: {.column width="40%"}
+```{=html}
+<div style="background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1.6rem;margin-top:0.5rem;text-align:center;">
+  <div style="font-family:var(--serif);font-size:1.4rem;color:var(--ink);line-height:1.3;margin-bottom:1rem;">
+    "All models are wrong, but some are useful."
+  </div>
+  <div style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;">
+    — George E. P. Box, 1976
+  </div>
+  <div style="margin-top:1.4rem;">
+    <div class="pill-row" style="justify-content:center;">
+      <span class="pill">tidymodels</span>
+      <span class="pill">reproducibility</span>
+      <span class="pill teal">iteration</span>
+    </div>
+  </div>
+</div>
+```
+:::
+:::::
+
+```{=html}
+<!-- ══════════════════════════════════════════════
+     SLIDE 15 — CIERRE / Q&A
+══════════════════════════════════════════════ -->
+```
+
+##  {.noframenumbering background-color="#1a1a2e"}
+
+```{=html}
+<div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;gap:0;">
+  <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.18em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:1.2rem;">Questions & Discussion</div>
+  <div style="font-family:var(--serif);font-size:3.4rem;color:#fff;line-height:1.1;margin-bottom:1.2rem;">Thank you.</div>
+  <div style="width:60px;height:3px;background:linear-gradient(90deg,#2d6a9f,#4db6ac);border-radius:2px;margin-bottom:2rem;"></div>
+  <div style="font-family:var(--sans);font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.8;">
+    References:<br>
+    Kuhn, M. &amp; Silge, J. (2022). <em>Tidy Modeling with R.</em> O'Reilly.<br>
+    James, G. et al. (2021). <em>An Introduction to Statistical Learning.</em> Springer.<br>
+    Box, G. E. P. (1976). Science and Statistics. <em>JASA</em>, 71(356).
+  </div>
+</div>
+```
