@@ -9,8 +9,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.37">
 
-  <meta name="author" content="Danilo David Estrella Guerra">
-  <title>Software para el Modelado</title>
+  <title>Tidy Modeling with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -133,15 +132,10 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Software para el Modelado</h1>
-  <p class="subtitle">Fundamentos de Modelado Estadístico y Machine Learning</p>
+  <h1 class="title">Tidy Modeling with R</h1>
+  <p class="subtitle">Un enfoque práctico (Capítulos 1 – 4)</p>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Danilo David Estrella Guerra 
-</div>
-</div>
 </div>
 
 </section>
@@ -519,6 +513,8 @@ Danilo David Estrella Guerra
 </section>
 <section id="section" class="slide level2 noframenumbering center" data-background-color="#f8f7f4">
 <h2></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <div class="cover-deco">Σ</div>
 <div class="cover-wrap">
   <div class="cover-eyebrow">Machine Learning Aplicado · Capítulo 1</div>
@@ -530,16 +526,46 @@ Danilo David Estrella Guerra
       <span class="cover-meta-label">Contexto</span>
       <span class="cover-meta-value">Tidy Modeling with R</span>
     </div>
-    <div class="cover-meta-item">
-      <span class="cover-meta-label">Duración</span>
-      <span class="cover-meta-value">25 min</span>
-    </div>
+    
     <div class="cover-meta-item">
       <span class="cover-meta-label">Alcance</span>
       <span class="cover-meta-value">Conceptual · Práctico</span>
     </div>
   </div>
 </div>
+</div><div class="column" style="width:45%;">
+<div <!--="" columna="" derecha="" —="" integrantes="" --="">
+  <div style="flex:0 0 280px; display:flex; flex-direction:column; gap:0.6rem;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; color:#2d6a9f; text-transform:uppercase; margin-bottom:0.4rem;">Integrantes</div>
+
+    <div style="background:rgba(45,106,159,0.03); border:1px solid rgba(45,106,159,0.12); border-radius:6px; padding:0.45rem 0.8rem;">
+      <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.8rem; color:#1a1a2e;">Danilo David, Estrella Guerra</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#5c5c7a; margin-top:0.1rem;">20220763</div>
+    </div>
+
+    <div style="background:rgba(45,106,159,0.03); border:1px solid rgba(45,106,159,0.12); border-radius:6px; padding:0.45rem 0.8rem;">
+      <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.8rem; color:#1a1a2e;">Ramón Davalillo</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#5c5c7a; margin-top:0.1rem;">20230389</div>
+    </div>
+
+    <div style="background:rgba(45,106,159,0.03); border:1px solid rgba(45,106,159,0.12); border-radius:6px; padding:0.45rem 0.8rem;">
+      <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.8rem; color:#1a1a2e;">Arévalo Aquije Eduardo</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#5c5c7a; margin-top:0.1rem;">20220756</div>
+    </div>
+
+    <div style="background:rgba(45,106,159,0.03); border:1px solid rgba(45,106,159,0.12); border-radius:6px; padding:0.45rem 0.8rem;">
+      <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.8rem; color:#1a1a2e;">José Ignacio Gamarra</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#5c5c7a; margin-top:0.1rem;">20180319</div>
+    </div>
+
+    <div style="background:rgba(45,106,159,0.03); border:1px solid rgba(45,106,159,0.12); border-radius:6px; padding:0.45rem 0.8rem;">
+      <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.8rem; color:#1a1a2e;">Asencios Menacho, Luz Soledad</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#5c5c7a; margin-top:0.1rem;">20221390</div>
+    </div>
+
+  </div>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════
      SLIDE 2 — ¿QUÉ ES UN MODELO?
 ══════════════════════════════════════════════ -->
@@ -746,7 +772,7 @@ Tres objetivos principales guían todo esfuerzo de modelado.
   </div>
   <div class="tl-item">
     <div class="tl-title">Exploración de Patrones</div>
-    <div class="tl-body">Orientado al EDA — el modelo sirve a la curiosidad del analista, no a un estándar externo.</div>
+    <div class="tl-body">Orientado al EDA: ilustra características de datos para enfatizar tendencias visuales o descubrir patrones para investigación.</div>
   </div>
 </div>
 </div><div class="column" style="width:46%;">
@@ -844,7 +870,7 @@ Tres objetivos principales guían todo esfuerzo de modelado.
 <section id="modelos-predictivos" class="slide level2 center">
 <h2>Modelos Predictivos</h2>
 <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">
-<strong>Objetivo:</strong> maximizar la precisión en datos <em>nuevos y no vistos</em> — no solo explicar las observaciones existentes.
+<strong>Objetivo:</strong> maximizar la precisión en datos <em>nuevos y no vistos</em>,  no solo explicar las observaciones existentes.
 </p>
 
 <div class="card-grid">
@@ -882,7 +908,7 @@ Tres objetivos principales guían todo esfuerzo de modelado.
 </div>
 
 <div class="concept-box" style="margin-top:0.9rem;">
-  <p>Ambos tipos comparten un imperativo común: la <strong>generalización</strong> — el rendimiento sobre datos que el modelo nunca ha visto.</p>
+  <p>Ambos tipos comparten un objetivo común: la <strong>fidelidad </strong>, lograr la máxima precisión posible al predecir valores para datos nuevos.</p>
 </div>
 <!-- ══════════════════════════════════════════════
      SLIDE 10 — TERMINOLOGÍA
@@ -980,8 +1006,7 @@ Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en
 <h2>Modelado Iterativo</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>El modelado nunca es lineal. Es un <strong>ciclo</strong> impulsado por retroalimentación en cada etapa.</p>
-<p><br></p>
+<p>El modelado nunca es lineal. Es un <strong>ciclo</strong> impulsado por retroalimentación en cada etapa. <br></p>
 <div class="timeline">
   <div class="tl-item">
     <div class="tl-title">EDA</div>
@@ -1000,37 +1025,34 @@ Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en
     <div class="tl-body">Rendimiento honesto en un conjunto reservado, una vez que todas las decisiones están finalizadas.</div>
   </div>
 </div>
+
+<div style="background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1.6rem;margin-top:1.8rem;text-align:center;">
+  <div style="font-family:var(--serif);font-size:1.4rem;color:var(--ink);line-height:1.3;margin-bottom:1rem;">
+    "The process of investigating the data may not be simple."
+  </div>
+  <div style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;">
+    — Wickham and Grolemund, 2016
+  </div>
+</div>
 </div><div class="column" style="width:50%;">
-<!-- Iterative cycle SVG -->
+<!-- Iterative cycle SVG — sticky para no desplazarse -->
+<div style="position:sticky;top:0;">
 <div style="background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.2rem;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;">
 <svg viewbox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="width:85%;height:auto;">
-  <!-- circle track -->
   <circle cx="110" cy="110" r="80" fill="none" stroke="rgba(45,106,159,0.12)" stroke-width="28"></circle>
-
-  <!-- nodes -->
-  <!-- EDA top -->
   <circle cx="110" cy="30" r="20" fill="#2d6a9f"></circle>
   <text x="110" y="34" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">EDA</text>
-
-  <!-- Feature right -->
   <circle cx="190" cy="110" r="20" fill="#2d6a9f"></circle>
   <text x="190" y="108" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Ing.</text>
   <text x="190" y="118" text-anchor="middle" font-family="DM Sans" font-size="7.5" fill="#fff" font-weight="500">Caract.</text>
-
-  <!-- Tuning bottom -->
   <circle cx="110" cy="190" r="20" fill="#4db6ac"></circle>
   <text x="110" y="194" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Ajuste</text>
-
-  <!-- Eval left -->
   <circle cx="30" cy="110" r="20" fill="#4db6ac"></circle>
   <text x="30" y="114" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#fff" font-weight="500">Eval.</text>
-
-  <!-- arrows on track -->
   <path d="M130,32 A80,80 0 0,1 188,90" fill="none" stroke="rgba(45,106,159,0.4)" stroke-width="2" marker-end="url(#arr)"></path>
   <path d="M188,130 A80,80 0 0,1 130,188" fill="none" stroke="rgba(45,106,159,0.4)" stroke-width="2" marker-end="url(#arr)"></path>
   <path d="M90,188 A80,80 0 0,1 32,130" fill="none" stroke="rgba(77,182,172,0.5)" stroke-width="2" marker-end="url(#arr2)"></path>
   <path d="M32,90 A80,80 0 0,1 90,32" fill="none" stroke="rgba(77,182,172,0.5)" stroke-width="2" marker-end="url(#arr2)"></path>
-
   <defs>
     <marker id="arr" markerwidth="6" markerheight="6" refx="3" refy="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="rgba(45,106,159,0.6)"></path>
@@ -1041,6 +1063,7 @@ Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en
   </defs>
 </svg>
 </div>
+</div>
 </div></div>
 <!-- ══════════════════════════════════════════════
      SLIDE 13 — CASO PRÁCTICO: CHICAGO TRANSIT
@@ -1049,39 +1072,39 @@ Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en
 <section id="caso-práctico-chicago-transit-authority" class="slide level2 center">
 <h2>Caso Práctico: Chicago Transit Authority</h2>
 <p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:1rem;">
-Predicción de la afluencia diaria en el metro — el monólogo interno de un analista.
+Predicción de la afluencia diaria en el metro: el monólogo interno de un analista.
 </p>
 
 <div class="card-grid four">
 
   <div class="card">
     <span class="card-icon">📊</span>
-    <div class="card-title">Paso 1 · Correlaciones</div>
-    <div class="card-body">¿Qué estaciones covarían? ¿La afluencia está autocorrelacionada? Emergen estacionalidades semanal y mensual.</div>
+    <div class="card-title">Paso 1 · Análisis exploratorio (EDA)</div>
+    <div class="card-body">Se identifica que los valores de afluencia entre las estaciones están extremadamente correlacionados. Además, se observa que el comportamiento del transporte en los fines de semana es significativamente distinto al de los días laborables.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🌡️</span>
-    <div class="card-title">Paso 2 · Clima</div>
-    <div class="card-body">Temperatura y precipitación se incorporan como características. Los días fríos y lluviosos reducen la afluencia de forma no lineal.</div>
+    <div class="card-title">Paso 2 · Ingeniería de funciones inicial</div>
+    <div class="card-body">Las fechas se codifican por día de la semana y año. Se considera el uso del Análisis de Componentes Principales (PCA) sobre los predictores correlacionados para simplificar la estructura de los datos que recibirá el modelo.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">📅</span>
-    <div class="card-title">Paso 3 · Festivos</div>
-    <div class="card-body">Los días festivos federales y locales generan caídas abruptas. Se codifican como variables indicadoras binarias.</div>
+    <div class="card-title">Paso 3 · Evaluación y selección de modelos</div>
+    <div class="card-body">Se ponen a prueba algoritmos como regresión lineal, K-vecinos cercanos (KNN) y árboles potenciados (boosted trees). Durante la evaluación, las puntuaciones de importancia de variables indican que el clima no tiene capacidad predictiva, por lo que se decide eliminarlo del análisis.</div>
   </div>
 
   <div class="card">
     <span class="card-icon">🌲</span>
-    <div class="card-title">Paso 4 · Boosted Trees</div>
-    <div class="card-body">XGBoost captura interacciones no lineales entre clima, calendario y efectos a nivel de estación.</div>
+    <div class="card-title">Paso 4 · Refinamiento iterativo</div>
+    <div class="card-body">Para corregir errores en fechas específicas, se codifican indicadores para los días festivos. Finalmente, se descarta el modelo KNN y se opta por optimizar el número de iteraciones en el modelo de árboles potenciados para alcanzar el rendimiento deseado.</div>
   </div>
 
 </div>
 
 <div class="concept-box teal" style="margin-top:1rem;">
-  <p>El analista nunca ajusta un modelo primero — cada característica está motivada por <strong>razonamiento de dominio</strong> antes que por evidencia estadística.</p>
+  <p>El analista no se limita a ajustar un algoritmo: el modelo final es el resultado de un ciclo donde la evaluación del rendimiento motiva nuevas etapas de ingeniería de funciones y análisis exploratorio.</p>
 </div>
 <!-- ══════════════════════════════════════════════
      SLIDE 14 — CONCLUSIONES
@@ -1094,18 +1117,18 @@ Predicción de la afluencia diaria en el metro — el monólogo interno de un an
 <div style="display:flex;flex-direction:column;gap:0.85rem;margin-top:0.5rem;">
 
   <div class="concept-box">
-    <p>🔄 <strong>El modelado es iterativo</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">EDA, ingeniería de características, ajuste y evaluación forman un ciclo — no una secuencia.</span></p>
+    <p>🔄 <strong>El modelado constituye un ciclo heurístico e iterativo</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">Las fases de análisis exploratorio (EDA), ingeniería de funciones y evaluación se retroalimentan constantemente. Este proceso no es una secuencia lineal, sino un camino para ganar entendimiento profundo de los datos.</span></p>
   </div>
 
   <div class="concept-box">
-    <p>🧰 <strong>El software moldea la práctica</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">Las buenas herramientas garantizan la reproducibilidad, protegen contra el data leakage y hacen de la práctica correcta el comportamiento por defecto.</span></p>
+    <p>🧰 <strong>El software promueve el foso del éxito</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">Un diseño robusto guía al investigador hacia buenas prácticas científicas por defecto. Las herramientas adecuadas garantizan la reproducibilidad y protegen al usuario de cometer errores metodológicos latentes.</span></p>
   </div>
 
   <div class="concept-box teal">
-    <p>🤝 <strong>ML y estadística son complementarios</strong><br>
-    <span style="font-size:0.85rem;color:var(--ink-muted);">El machine learning aporta fidelidad predictiva; la estadística aporta rigor inferencial. Ambos son necesarios.</span></p>
+    <p>🤝 <strong>La estadística y el machine learning son enfoques complementarios</strong><br>
+    <span style="font-size:0.85rem;color:var(--ink-muted);">El rigor de las conclusiones inferenciales debe estar respaldado por la fidelidad predictiva del modelo. Un modelo con significancia estadística pero baja precisión sobre datos nuevos resulta altamente sospechoso.</span></p>
   </div>
 
 </div>
@@ -1138,9 +1161,7 @@ Predicción de la afluencia diaria en el metro — el monólogo interno de un an
   <div style="width:60px;height:3px;background:linear-gradient(90deg,#2d6a9f,#4db6ac);border-radius:2px;margin-bottom:2rem;"></div>
   <div style="font-family:var(--sans);font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.8;">
     Referencias:<br>
-    Kuhn, M. &amp; Silge, J. (2022). <em>Tidy Modeling with R.</em> O'Reilly.<br>
-    James, G. et al. (2021). <em>An Introduction to Statistical Learning.</em> Springer.<br>
-    Box, G. E. P. (1976). Science and Statistics. <em>JASA</em>, 71(356).
+    Max Kuhn &amp; Julia Silge (2022). <em>Tidy Modeling with R.</em> O'Reilly.<br>
   </div>
 </div>
 
