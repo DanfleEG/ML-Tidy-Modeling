@@ -1174,28 +1174,20 @@ Un flujo de trabajo riguroso protege contra las fuentes más comunes de error en
   Predicción de la afluencia diaria en el sistema de trenes de Chicago.
 </p>
 
-<!-- 1. CONTENEDOR MAESTRO: Controla el ancho del 62% y centra todo el bloque -->
-<div style="width:62%; margin:0 auto; box-sizing:border-box;">
+<div class="pipeline-container">
+  <img src="images/chicago_train.png" alt="Pipeline de transformación" class="pipeline-img">
+</div>
 
-  <!-- 2. CONTENEDOR DE LA IMAGEN (Ocupa el 100% de su padre) -->
-  <div style="height:420px; border-radius:8px; overflow:hidden;">
-    <img src="/images/chicago_train.png" alt="Chicago L train elevated railway at night" style="width:100%; height:100%; object-fit:cover; display:block;">
+<div style="background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.6rem; margin-top:0.5rem; text-align:center; box-sizing:border-box;">
+  <div style="font-family:var(--serif); font-size:1.4rem; color:var(--ink); line-height:1.3; margin-bottom:1rem;">
+    ¿Cómo puede un modelo aprender el comportamiento diario de una ciudad?
   </div>
-
-  <!-- 3. TARJETA DEBAJO (Ocupa el 100% de su padre) -->
-  <div style="background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.6rem; margin-top:0.5rem; text-align:center; box-sizing:border-box;">
-    <div style="font-family:var(--serif); font-size:1.4rem; color:var(--ink); line-height:1.3; margin-bottom:1rem;">
-      ¿Cómo puede un modelo aprender el comportamiento diario de una ciudad?
-    </div>
-    <div style="margin-top:1.4rem;">
-      <!-- Agregamos flex-wrap:wrap para que las etiquetas bajen si no hay espacio, en vez de estirar la tarjeta -->
-      <div class="pill-row" style="justify-content:center; flex-wrap:wrap; gap:0.5rem;">
-        <span class="pill">Número de pasajeros</span>
-        <span class="pill">estaciones </span>
-        <span class="pill teal">clima </span>
-        <span class="pill teal">patrones temporales </span>
-      </div>
-    </div>
+  
+  <div class="pill-row" style="justify-content:center; flex-wrap:wrap; gap:0.5rem;">
+    <span class="pill">Número de pasajeros</span>
+    <span class="pill">estaciones </span>
+    <span class="pill teal">clima </span>
+    <span class="pill teal">patrones temporales </span>
   </div>
 </div>
 <!-- ══════════════════════════════════════════════
